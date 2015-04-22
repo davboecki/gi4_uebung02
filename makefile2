@@ -1,0 +1,13 @@
+CC = gcc                # GNU C-Compiler benutzen
+CFLAGS = -Wall -g       # Compilerflags
+LDFLAGS =               # keine Linkerflags
+
+all: edit
+
+depend:
+	gcc -MM main.c input.c > maindeps
+
+include maindeps
+
+edit: main.o input.o
+	$(CC) $(LDFLAGS) -o edit main.o input.o
